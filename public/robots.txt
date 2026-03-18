@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://swasthika-florals.vercel.app/sitemap.xml
