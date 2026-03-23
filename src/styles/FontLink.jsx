@@ -239,12 +239,12 @@ export const FontLink = () => (
       border-radius:2px;
       
     }
-    .sfd-cat-card:nth-child(1) { grid-column: 1/6; grid-row: 1; aspect-ratio: unset; }
-    .sfd-cat-card:nth-child(2) { grid-column: 6/9; grid-row: 1; }
-    .sfd-cat-card:nth-child(3) { grid-column: 9/13; grid-row: 1; }
-    .sfd-cat-card:nth-child(4) { grid-column: 1/5; grid-row: 2; }
-    .sfd-cat-card:nth-child(5) { grid-column: 5/9; grid-row: 2; aspect-ratio: unset; }
-    .sfd-cat-card:nth-child(6) { grid-column: 9/13;  grid-row: 2; }
+    .sfd-cat-card:nth-child(1) { grid-column: 1/6; grid-row: 1; aspect-ratio: 3/3 }
+    .sfd-cat-card:nth-child(2) { grid-column: 6/9; grid-row: 1; aspect-ratio: 3/3;}
+    .sfd-cat-card:nth-child(3) { grid-column: 9/13; grid-row: 1; aspect-ratio: 3/3;}
+    .sfd-cat-card:nth-child(4) { grid-column: 1/5; grid-row: 2; aspect-ratio: 3/3;}
+    .sfd-cat-card:nth-child(5) { grid-column: 5/9; grid-row: 2; aspect-ratio: 3/3; }
+    .sfd-cat-card:nth-child(6) { grid-column: 9/13;  grid-row: 2; aspect-ratio: 3/3;}
     .sfd-cat-bg {
       position: absolute; inset: 0; background-size: cover; background-position: center;
       transition: transform .8s cubic-bezier(.22,1,.36,1);
@@ -472,7 +472,7 @@ export const FontLink = () => (
       .sfd-cat-card:nth-child(3),
       .sfd-cat-card:nth-child(4),
       .sfd-cat-card:nth-child(5) { 
-      grid-column: 1; grid-row: unset; aspect-ratio: 4/3; 
+      grid-column: 1; grid-row: unset; aspect-ratio: 3/3; 
       }
               .sfd-about-frame {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
