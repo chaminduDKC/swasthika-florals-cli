@@ -67,12 +67,12 @@ const ImageModal = ({ images, index, onClose }) => {
 
 <button  onClick={onClose} style={{
    position: 'absolute', top: 20, right: 40,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    display: 'flex', justifyContent: 'center',
   background: 'rgba(10,8,5,.35)',       // ← --black with opacity
   border: '1px solid rgba(201,168,76,.3)',  // ← --gold border
   borderRadius: '50%',
   width: 40, height: 40,
-  display: 'flex', alignItems: 'center', justifyContent: 'center',
+   alignItems: 'center',
   cursor: 'pointer',
   backdropFilter: 'blur(8px)',          // ← blurs whatever is behind
 }}>
@@ -81,20 +81,7 @@ const ImageModal = ({ images, index, onClose }) => {
   </svg>
 </button>
 
-      {/* <button
-        onClick={onClose}
-        style={{
-          position: 'absolute', top: 20, right: 20,
-          background: 'rgba(255,255,255,.1)', border: '1px solid rgba(255,255,255,.2)',
-          color: '#fff', borderRadius: '50%', width: 44, height: 44,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: 'pointer', transition: 'background .2s', zIndex: 10,
-        }}
-        onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,.2)'}
-        onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,.1)'}
-      >
-        <CloseSvg />
-      </button> */}
+
 
       {/* Counter */}
       <div style={{
@@ -190,23 +177,39 @@ const ImageModal = ({ images, index, onClose }) => {
           overflowX: 'auto', maxWidth: 900, width: '100%', paddingBottom: 4,
         }}>
           {images.map((im, i) => (
-            <div
-              key={im._id}
-              onClick={e => { e.stopPropagation(); setCurrent(i) }}
-              style={{
-                flexShrink: 0, width: 60, height: 60, borderRadius: 4,
-                overflow: 'hidden', cursor: 'pointer',
-                border: `2px solid ${i === current ? '#c9a84c' : 'transparent'}`,
-                opacity: i === current ? 1 : 0.5,
-                transition: 'all .2s',
-              }}
-            >
-              <img
-                src={optimizeImage(im.secure_url || im.url, 120)}
-                alt={im.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
+            <div style={{
+  width: '100%',
+  aspectRatio: '4/3',
+  overflow: 'hidden',
+  position: 'relative',
+}}>
+  {/* Blurred background — same image, stretched + blurred */}
+  <img
+    src={im.url}
+    alt={im.title}
+    aria-hidden="true"
+    style={{
+      position: 'absolute', inset: 0,
+      width: '100%', height: '100%',
+      objectFit: 'cover',        // ← stretched to fill
+      filter: 'blur(12px) brightness(0.6) saturate(1.2)',
+      transform: 'scale(1.1)',   // ← prevents blur edges showing
+    }}
+  />
+
+  {/* Actual image on top — full, no crop */}
+  <img
+    src={im.url}
+    alt={im.title}
+    loading="lazy"
+    style={{
+      position: 'absolute', inset: 0,
+      width: '100%', height: '100%',
+      objectFit: 'contain',      // ← full image visible ✅
+      objectPosition: 'center',
+    }}
+  />
+</div>
           ))}
         </div>
       )}
