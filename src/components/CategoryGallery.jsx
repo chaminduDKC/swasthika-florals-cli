@@ -86,7 +86,11 @@ const ImageModal = ({ images, index, onClose }) => {
       {/* Counter */}
       <div style={{
         position: 'absolute', top: 24, left: '50%', transform: 'translateX(-50%)',
-        fontSize: '.75rem', letterSpacing: '.2em', color: 'rgba(255,255,255,.5)',
+        background: 'rgba(10,8,5,.35)',
+        padding:"2px 10px",
+        borderRadius:"10px",
+      
+        fontSize: '.85rem', letterSpacing: '.2em', color: '#ffffff',
       }}>
         {current + 1} / {images.length}
       </div>
@@ -145,11 +149,18 @@ const ImageModal = ({ images, index, onClose }) => {
         {/* Image info */}
         <div style={{
           background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.1)',
-          borderRadius: 4, padding: '16px 20px',
-          display: 'flex', flexDirection: 'column', gap: 8,
+          borderRadius: 4, padding: '0px 10px',
+          display: 'flex', flexDirection: 'column', gap: 6,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.3rem', color: '#f0eaf8', fontWeight: 400 }}>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif",
+              lineHeight: 1.7,
+      display: '-webkit-box',
+      WebkitLineClamp: 1,           // Change to 3 if you want 3 lines
+      WebkitBoxOrient: 'vertical',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',  
+              fontSize: '1.3rem', color: '#f0eaf8', fontWeight: 400 }}>
               {img.title}
             </h3>
             {img.categoryName && (
