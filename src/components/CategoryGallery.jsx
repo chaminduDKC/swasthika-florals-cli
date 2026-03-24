@@ -36,9 +36,9 @@ const ImageModal = ({ images, index, onClose }) => {
   // Keyboard navigation
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'Escape')     onClose()
+      if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowRight') setCurrent(p => Math.min(p + 1, images.length - 1))
-      if (e.key === 'ArrowLeft')  setCurrent(p => Math.max(p - 1, 0))
+      if (e.key === 'ArrowLeft') setCurrent(p => Math.max(p - 1, 0))
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
@@ -65,21 +65,21 @@ const ImageModal = ({ images, index, onClose }) => {
       {/* Close button */}
 
 
-<button  onClick={onClose} style={{
-   position: 'absolute', top: 20, right: 40,
-    display: 'flex', justifyContent: 'center',
-  background: 'rgba(10,8,5,.35)',       // ← --black with opacity
-  border: '1px solid rgba(201,168,76,.3)',  // ← --gold border
-  borderRadius: '50%',
-  width: 40, height: 40,
-   alignItems: 'center',
-  cursor: 'pointer',
-  backdropFilter: 'blur(8px)',          // ← blurs whatever is behind
-}}>
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5">
-    <path d="M18 6L6 18M6 6l12 12" />
-  </svg>
-</button>
+      <button onClick={onClose} style={{
+        position: 'absolute', top: 20, right: 40,
+        display: 'flex', justifyContent: 'center',
+        background: 'rgba(10,8,5,.35)',       // ← --black with opacity
+        border: '1px solid rgba(201,168,76,.3)',  // ← --gold border
+        borderRadius: '50%',
+        width: 40, height: 40,
+        alignItems: 'center',
+        cursor: 'pointer',
+        backdropFilter: 'blur(8px)',          // ← blurs whatever is behind
+      }}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
 
 
 
@@ -177,39 +177,29 @@ const ImageModal = ({ images, index, onClose }) => {
           overflowX: 'auto', maxWidth: 900, width: '100%', paddingBottom: 4,
         }}>
           {images.map((im, i) => (
-            <div style={{
-  width: '100%',
-  aspectRatio: '4/3',
-  overflow: 'hidden',
-  position: 'relative',
-}}>
-  {/* Blurred background — same image, stretched + blurred */}
-  <img
-    src={im.url}
-    alt={im.title}
-    aria-hidden="true"
-    style={{
-      position: 'absolute', inset: 0,
-      width: '100%', height: '100%',
-      objectFit: 'cover',        // ← stretched to fill
-      filter: 'blur(12px) brightness(0.6) saturate(1.2)',
-      transform: 'scale(1.1)',   // ← prevents blur edges showing
-    }}
-  />
-
-  {/* Actual image on top — full, no crop */}
-  <img
-    src={im.url}
-    alt={im.title}
-    loading="lazy"
-    style={{
-      position: 'absolute', inset: 0,
-      width: '100%', height: '100%',
-      objectFit: 'contain',      // ← full image visible ✅
-      objectPosition: 'center',
-    }}
-  />
-</div>
+            <div
+              key={im._id}  // ← add key!
+              onClick={e => { e.stopPropagation(); setCurrent(i) }}
+              style={{
+                flexShrink: 0, width: 60, height: 60, borderRadius: 4,
+                overflow: 'hidden', cursor: 'pointer', position: 'relative',
+                border: `2px solid ${i === current ? '#c9a84c' : 'transparent'}`,
+                opacity: i === current ? 1 : 0.5,
+                transition: 'all .2s',
+              }}
+            >
+              <img
+                src={optimizeImage(im.secure_url || im.url, 120)}
+                alt=""           // ← empty for thumbnails
+                aria-hidden="true"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(6px)', transform: 'scale(1.1)' }}
+              />
+              <img
+                src={optimizeImage(im.secure_url || im.url, 120)}
+                alt={im.title}
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            </div>
           ))}
         </div>
       )}
@@ -249,18 +239,45 @@ const ImageCard = ({ image, index, onClick }) => {
       )}
 
       {/* Image */}
-      <img
-        src={optimizeImage(image.secure_url || image.url, 600)}
-        alt={image.title}
-        loading="lazy"
-        onLoad={() => setLoaded(true)}
-        style={{
-          width: '100%', display: 'block',
-          aspectRatio: '4/3', objectFit: 'cover',
-          transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
-          opacity: loaded ? 1 : 0,
-        }}
-      />
+      
+    <div style={{ position: 'relative', height: '500px' }}>
+  
+  {/* 1. Blurred background - behind everything */}
+  <img
+    src={optimizeImage(image.secure_url || image.url, 120)}
+    alt=""
+    aria-hidden="true"
+    style={{
+      position: 'absolute',
+      inset: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      filter: 'blur(6px)',
+      transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
+      transform: 'scale(1.1)',
+      zIndex: 1,           // ← optional but clear
+    }}
+  />
+
+  {/* 2. Sharp main image - on top */}
+  <img
+    src={optimizeImage(image.secure_url || image.url, 600)}
+    alt={image.title}
+    loading="lazy"
+    onLoad={() => setLoaded(true)}
+    style={{
+      position: 'relative',     // important
+      zIndex: 2,                // ← this puts it on top
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+      display: 'block',
+      transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
+      opacity: loaded ? 1 : 0,
+    }}
+  />
+</div>
 
       {/* Hover overlay */}
       <div
@@ -293,27 +310,27 @@ const ImageCard = ({ image, index, onClick }) => {
 export default function CategoryGallery() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [category, setCategory]   = useState(null)
-  const [images, setImages]       = useState([])
-  const [loading, setLoading]     = useState(true)
+  const [category, setCategory] = useState(null)
+  const [images, setImages] = useState([])
+  const [loading, setLoading] = useState(true)
   const [modalIndex, setModalIndex] = useState(null)
 
   useEffect(() => {
     console.log(`id is ${id}`);
-    
+
     const fetchData = async () => {
       try {
         const catRes = await categoryApi.getCategory(id);
-        console.log(catRes.data.data    );
+        console.log(catRes.data.data);
         setCategory(catRes?.data?.data)
       } catch (error) {
-         console.error('Failed to load:', error)
+        console.error('Failed to load:', error)
       }
       try {
         const imgRes = await imageApi.getImagesByCategory(id)
         console.log(imgRes);
         setImages(imgRes?.data?.data)
-        
+
       } catch (err) {
         console.error('Failed to load:', err)
       } finally {
@@ -376,7 +393,8 @@ export default function CategoryGallery() {
           backgroundSize: 'cover', backgroundPosition: 'center',
           filter: 'brightness(.4) saturate(.7)',
           transform: 'scale(1.05)',
-        }} />
+        }} >
+        </div>
 
         {/* Gradient overlay */}
         <div style={{
