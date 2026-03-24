@@ -130,7 +130,7 @@ const ImageModal = ({ images, index, onClose }) => {
       {/* Image */}
       <div
         onClick={e => e.stopPropagation()}
-        style={{ maxWidth: 900, width: '100%', display: 'flex', flexDirection: 'column', gap: 16 }}
+        style={{ maxWidth: 900, width: '100%', display: 'flex', flexDirection: 'column', gap: 15 }}
       >
         <img
           src={optimizeImage(img.secure_url || img.url, 1600)}
@@ -163,10 +163,21 @@ const ImageModal = ({ images, index, onClose }) => {
             )}
           </div>
           {img.description && (
-            <p style={{ fontSize: '.83rem', color: 'rgba(255,255,255,.6)', lineHeight: 1.7 }}>
-              {img.description}
-            </p>
-          )}
+  <p
+    style={{
+      fontSize: '.83rem',
+      color: 'rgba(255,255,255,.6)',
+      lineHeight: 1.7,
+      display: '-webkit-box',
+      WebkitLineClamp: 2,           // Change to 3 if you want 3 lines
+      WebkitBoxOrient: 'vertical',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    }}
+  >
+    {img.description}
+  </p>
+)}
         </div>
       </div>
 
