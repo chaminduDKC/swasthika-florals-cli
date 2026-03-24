@@ -87,9 +87,9 @@ const ImageModal = ({ images, index, onClose }) => {
       <div style={{
         position: 'absolute', top: 24, left: '50%', transform: 'translateX(-50%)',
         background: 'rgba(10,8,5,.35)',
-        padding:"2px 10px",
-        borderRadius:"10px",
-      
+        padding: "2px 10px",
+        borderRadius: "10px",
+
         fontSize: '.85rem', letterSpacing: '.2em', color: '#ffffff',
       }}>
         {current + 1} / {images.length}
@@ -153,14 +153,16 @@ const ImageModal = ({ images, index, onClose }) => {
           display: 'flex', flexDirection: 'column', gap: 6,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif",
+            <h3 style={{
+              fontFamily: "'Cormorant Garamond', serif",
               lineHeight: 1.7,
-      display: '-webkit-box',
-      WebkitLineClamp: 1,           // Change to 3 if you want 3 lines
-      WebkitBoxOrient: 'vertical',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',  
-              fontSize: '1.3rem', color: '#f0eaf8', fontWeight: 400 }}>
+              display: '-webkit-box',
+              WebkitLineClamp: 1,           // Change to 3 if you want 3 lines
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              fontSize: '1.3rem', color: '#c9a84c', fontWeight: 400
+            }}>
               {img.title}
             </h3>
             {img.categoryName && (
@@ -174,21 +176,21 @@ const ImageModal = ({ images, index, onClose }) => {
             )}
           </div>
           {img.description && (
-  <p
-    style={{
-      fontSize: '.83rem',
-      color: 'rgba(255,255,255,.6)',
-      lineHeight: 1.7,
-      display: '-webkit-box',
-      WebkitLineClamp: 2,           // Change to 3 if you want 3 lines
-      WebkitBoxOrient: 'vertical',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    }}
-  >
-    {img.description}
-  </p>
-)}
+            <p
+              style={{
+                fontSize: '.83rem',
+                color: 'rgba(255,255,255,.6)',
+                lineHeight: 1.7,
+                display: '-webkit-box',
+                WebkitLineClamp: 2,           // Change to 3 if you want 3 lines
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {img.description}
+            </p>
+          )}
         </div>
       </div>
 
@@ -247,7 +249,7 @@ const ImageCard = ({ image, index, onClick }) => {
       }}
       onMouseLeave={e => {
         e.currentTarget.querySelector('img').style.transform = 'scale(1)'
-        e.currentTarget.querySelector('.img-overlay').style.opacity = '0'
+        e.currentTarget.querySelector('.img-overlay').style.opacity = '1'
       }}
     >
       {/* Skeleton loader */}
@@ -261,58 +263,59 @@ const ImageCard = ({ image, index, onClick }) => {
       )}
 
       {/* Image */}
-      
-    <div style={{ position: 'relative', height: '500px' }}>
-  
-  {/* 1. Blurred background - behind everything */}
-  <img
-    src={optimizeImage(image.secure_url || image.url, 120)}
-    alt=""
-    aria-hidden="true"
-    style={{
-      position: 'absolute',
-      inset: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      filter: 'blur(6px)',
-      transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
-      transform: 'scale(1.1)',
-      zIndex: 1,           // ← optional but clear
-    }}
-  />
 
-  {/* 2. Sharp main image - on top */}
-  <img
-    src={optimizeImage(image.secure_url || image.url, 600)}
-    alt={image.title}
-    loading="lazy"
-    onLoad={() => setLoaded(true)}
-    style={{
-      position: 'relative',     // important
-      zIndex: 2,                // ← this puts it on top
-      width: '100%',
-      height: '100%',
-      objectFit: 'contain',
-      display: 'block',
-      transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
-      opacity: loaded ? 1 : 0,
-    }}
-  />
-</div>
+      <div style={{ position: 'relative', height: '500px' }}>
+
+        {/* 1. Blurred background - behind everything */}
+        <img
+          src={optimizeImage(image.secure_url || image.url, 120)}
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'blur(6px)',
+            transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
+            transform: 'scale(1.1)',
+            zIndex: 1,           // ← optional but clear
+          }}
+        />
+
+        {/* 2. Sharp main image - on top */}
+        <img
+          src={optimizeImage(image.secure_url || image.url, 600)}
+          alt={image.title}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          style={{
+            position: 'relative',     // important
+            zIndex: 2,                // ← this puts it on top
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            display: 'block',
+            transition: 'transform .6s cubic-bezier(.22,1,.36,1)',
+            opacity: loaded ? 1 : 0,
+          }}
+        />
+      </div>
 
       {/* Hover overlay */}
       <div
         className="img-overlay"
         style={{
-          position: 'absolute', inset: 0, opacity: 0,
+          position: 'absolute', inset: 0, opacity: 1,
           background: 'linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 60%, transparent 100%)',
           transition: 'opacity .4s ease',
           display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
           padding: '16px',
+          zIndex:111
         }}
       >
-        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: '#f0eaf8', fontWeight: 400, marginBottom: 4 }}>
+        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.2rem', color: '#c9a84c', fontWeight: 400, marginBottom: 4 }}>
           {image.title}
         </div>
         {image.description && (
@@ -321,7 +324,7 @@ const ImageCard = ({ image, index, onClick }) => {
           </div>
         )}
         <div style={{ marginTop: 10, fontSize: '.65rem', letterSpacing: '.15em', textTransform: 'uppercase', color: '#c9a84c' }}>
-          View Full ↗
+          click to View Full ↗
         </div>
       </div>
     </div>
@@ -424,23 +427,7 @@ export default function CategoryGallery() {
           background: 'linear-gradient(to bottom, rgba(9,8,15,.3) 0%, rgba(9,8,15,.1) 40%, rgba(9,8,15,.9) 100%)',
         }} />
 
-        {/* Back button */}
-        {/* <button
-          onClick={() => navigate('/')}
-          style={{
-            position: 'absolute', top: 24, left: 24,
-            display: 'flex', alignItems: 'center', gap: 8,
-            background: 'rgba(9,8,15,.6)', backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(201,168,76,.3)', color: '#c9a84c',
-            padding: '10px 18px', borderRadius: 2, cursor: 'pointer',
-            fontSize: '.75rem', letterSpacing: '.15em', textTransform: 'uppercase',
-            transition: 'all .2s', fontFamily: "'Jost', sans-serif",
-          }}
-          onMouseEnter={e => e.currentTarget.style.background = 'rgba(201,168,76,.1)'}
-          onMouseLeave={e => e.currentTarget.style.background = 'rgba(9,8,15,.6)'}
-        >
-          <BackArrow /> Back
-        </button> */}
+       
 
         {/* Hero content */}
         <div style={{
