@@ -1,6 +1,7 @@
 import React, { useEffect,useRef, useState } from 'react';
 import { categoryApi } from "../apis/index.js"
 import { useNavigate } from 'react-router-dom';
+import { optimizeImage } from '../../utils/optimizeImage.js';
 
 
 const ArrowSvg = () => (
@@ -27,7 +28,7 @@ const navigate = useNavigate();
         <div
             className="sfd-cat-bg"
             style={{
-                backgroundImage: `url(${cat.thumbnail})`,
+                backgroundImage: `url(${optimizeImage(cat.thumbnail, 1000)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
