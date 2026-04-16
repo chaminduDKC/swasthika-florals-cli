@@ -28,7 +28,7 @@ const navigate = useNavigate();
         <div
             className="sfd-cat-bg"
             style={{
-                backgroundImage: `url(${optimizeImage(cat.thumbnail, 1000)})`,
+                backgroundImage: `url(${optimizeImage(cat.thumbnail, 800)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
