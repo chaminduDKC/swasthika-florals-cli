@@ -50,7 +50,7 @@ const Gallery = () => {
                                 navigateTo(`/category/${item._id}`)
                             }}>
                                 <div className="sfd-gallery-icon" aria-hidden="true">
-                                    <img src={optimizeImage(item.thumbnail, 1200)} style={{
+                                    <img src={optimizeImage(item.thumbnail, 800)} style={{
                                         width: '320px',
                                         height: '380px',
                                         objectFit: 'cover',

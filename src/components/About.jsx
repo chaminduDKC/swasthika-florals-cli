@@ -40,7 +40,7 @@ const About = () => {
                 <div className="sfd-about-visual">
                     <div className="sfd-about-frame">
                         <div className="sfd-about-frame-icon">
-                            <img src={optimizeImage(engageMentCat?.thumbnail, 1000)} alt={engageMentCat.name +" "+ engageMentCat.label} style={{ objectFit: "contain" }} height="100%" width={"100%"} />
+                            <img src={optimizeImage(engageMentCat?.thumbnail)} alt={engageMentCat.name +" "+ engageMentCat.label} style={{ objectFit: "contain" }} height="100%" width={"100%"} />
                         </div>
                     </div>
                     <div className="sfd-about-frame-2">

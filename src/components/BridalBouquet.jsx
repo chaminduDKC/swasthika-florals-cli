@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { categoryApi } from '../apis/index.js'
+import { optimizeImage } from '../../utils/optimizeImage.js'
 
 /* ── Arrow SVG ── */
 const ArrowSvg = () => (
@@ -79,7 +80,7 @@ const BouquetCard = ({ cat, index }) => {
       <div style={{
         
         position: 'absolute', inset: 0,
-        backgroundImage: `url(${cat.thumbnail})`,
+        backgroundImage: `url(${optimizeImage(cat.thumbnail, 800)})`,
         backgroundSize: 'cover', backgroundPosition: 'center',
         filter: hovered ? 'brightness(.9) saturate(1)' : 'brightness(.95) saturate(1)',
         transform: hovered ? 'scale(1.06)' : 'scale(1)',
