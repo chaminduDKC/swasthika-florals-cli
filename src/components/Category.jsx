@@ -36,16 +36,13 @@ const navigate = useNavigate();
         <CornerSvg />
         <div className="sfd-cat-overlay" />
         <div className="sfd-cat-content">
-            {/* <span className="sfd-cat-num">{cat?.order}</span> */}
             <h3 className='sfd-cat-name'>{cat?.name} <em>{cat?.label}</em></h3>
-            <span className="sfd-cat-arrow"  onClick={() => {
-                navigate(`/category/${cat?._id}`)
-                console.log(cat?._id);
-                
-                
-            }} role="button" tabIndex={0}>
-                Explore <ArrowSvg />
-            </span>
+            <span className="sfd-cat-arrow" onClick={() => navigate(`/category/${cat?._id}`)} role="button" tabIndex={0}>
+  <span className="arrow-label">Explore</span>
+  <span className="arrow-icon">
+    <ArrowSvg />
+  </span>
+</span>
         </div>
 
     </article>
