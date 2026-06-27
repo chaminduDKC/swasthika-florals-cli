@@ -299,7 +299,6 @@ export const FontLink = () => (
     .sfd-cat-content {
       position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 28px 32px;
       display:flex;
-      flex-direction:column;
       transform: translateY(8px); transition: transform var(--tr);
     }
     .sfd-cat-card:hover .sfd-cat-content { transform: translateY(0); }

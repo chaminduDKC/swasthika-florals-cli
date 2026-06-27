@@ -166,23 +166,32 @@ const BouquetCard = ({ cat, index }) => {
           gap: hovered ? 16 : 10,
           transition: 'gap .4s cubic-bezier(.22,1,.36,1)',
         }}>
-          <span style={{
-            fontSize: '.68rem', letterSpacing: '.25em',
-            textTransform: 'uppercase', color: 'var(--gold)',
-            fontFamily: 'var(--ff-body)',
-          }}>
-            Explore Collection
-          </span>
+          <span
+                                className="sfd-cat-arrow"
+                                onClick={() => navigate(`/category/${engageMentCat._id}`)}
+                                role="button"
+                                tabIndex={0}
+                                style={{
+                                    display: 'inline-flex', alignItems: 'center', gap: 10,
+                                    fontSize: '.68rem', letterSpacing: '.25em',
+                                    textTransform: 'uppercase', color: 'var(--gold)',
+                                    cursor: 'pointer', width: 'fit-content',
+                                    transition: 'gap .3s var(--tr)',
+                                }}
+                               
+                            >
+                                <span className="arrow-icon">
+    <ArrowSvg />
+  </span>
+                                Explore Engagements 
+                            </span>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 4, color: 'var(--gold)',
             transform: hovered ? 'translateX(4px)' : 'translateX(0)',
             transition: 'transform .4s cubic-bezier(.22,1,.36,1)',
           }}>
-            <div style={{
-              width: hovered ? 28 : 12, height: 1, background: 'var(--gold)',
-              transition: 'width .4s cubic-bezier(.22,1,.36,1)',
-            }} />
-            <ArrowSvg />
+           
+            
           </div>
         </div>
       </div>

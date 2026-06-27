@@ -111,10 +111,12 @@ const About = () => {
                                     cursor: 'pointer', width: 'fit-content',
                                     transition: 'gap .3s var(--tr)',
                                 }}
-                                onMouseEnter={e => e.currentTarget.style.gap = '18px'}
-                                onMouseLeave={e => e.currentTarget.style.gap = '10px'}
+                               
                             >
-                                Explore Engagements <ArrowSvg />
+                                <span className="arrow-icon">
+    <ArrowSvg />
+  </span>
+                                Explore Engagements 
                             </span>
                         </div>
                     </div>
