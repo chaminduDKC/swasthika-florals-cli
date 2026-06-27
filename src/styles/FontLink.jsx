@@ -35,21 +35,7 @@ export const FontLink = () => (
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
 
-    /* CURSOR */
-    .sfd-cursor {
-      position: fixed; width: 8px; height: 8px;
-      background: var(--gold); border-radius: 50%;
-      pointer-events: none; z-index: 10000;
-      transform: translate(-50%,-50%);
-      transition: width .3s, height .3s, opacity .3s;
-    }
-    .sfd-cursor-ring {
-      position: fixed; width: 32px; height: 32px;
-      border: 1px solid rgba(201,168,76,.5); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: width .3s, height .3s;
-    }
+  
 
     /* NAV */
     .sfd-nav {
