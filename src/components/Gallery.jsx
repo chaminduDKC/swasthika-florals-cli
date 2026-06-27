@@ -28,7 +28,7 @@ const Gallery = () => {
 
     return (
         <section id="gallery" style={{ overflow: "hidden" }} aria-labelledby="gallery-heading">
-            <div style={{ padding: "0 48px 48px" }}>
+            <div style={{ padding: "0 48px 48px",  maxWidth: 1400, margin: "0 auto" }}>
                 <span className="sfd-section-label sfd-reveal">Our Work</span>
                 <h2 className="sfd-section-title sfd-reveal d1" id="gallery-heading">A Glimpse of <em>Beauty</em></h2>
                 <div className="sfd-gold-line sfd-reveal d2" />
@@ -36,7 +36,7 @@ const Gallery = () => {
             </div>
             {
                 otherCats.length === 0 ? (
-                    <h1>Empty</h1>
+                    <h1 style={{ padding: "0 48px 48px",  maxWidth: 1400, margin: "0 auto" }}>Still Processing</h1>
                 ) : (
                     <div
                         className="sfd-gallery-strip" ref={stripRef}
