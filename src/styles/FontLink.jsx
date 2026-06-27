@@ -233,12 +233,52 @@ export const FontLink = () => (
      
     }
     .sfd-cat-card {
-     
-      position: relative; overflow: hidden; cursor: pointer;
-      background: var(--card-bg); aspect-ratio: 1/1.15;
-      border-radius:2px;
-      
-    }
+  position: relative; overflow: hidden; cursor: pointer;
+  background: var(--card-bg); aspect-ratio: 1/1.15;
+  border-radius: 6px;
+
+  border-top: 1px solid rgba(255,255,255,.13);
+  border-left: 1px solid rgba(255,255,255,.07);
+  border-right: 1px solid rgba(0,0,0,.6);
+  border-bottom: 1px solid rgba(0,0,0,.8);
+  box-shadow:
+    0 2px 0 0 rgba(0,0,0,.9),
+    0 4px 0 0 rgba(0,0,0,.6),
+    0 6px 0 0 rgba(0,0,0,.35),
+    0 8px 0 0 rgba(0,0,0,.18),
+    0 12px 28px rgba(0,0,0,.7),
+    0 4px 10px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 1px 1px 0 rgba(255,255,255,.06),
+    inset 0 -2px 6px rgba(0,0,0,.5);
+
+  transform: translateY(0);
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.sfd-cat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sfd-cat-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(201,168,76,0);
+  transition: box-shadow .4s;
+  pointer-events: none;
+  z-index: 9;
+}
+
     .sfd-cat-card:nth-child(1) { grid-column: 1/6; grid-row: 1; aspect-ratio: 3/3 }
     .sfd-cat-card:nth-child(2) { grid-column: 6/9; grid-row: 1; aspect-ratio: 3/3;}
     .sfd-cat-card:nth-child(3) { grid-column: 9/13; grid-row: 1; aspect-ratio: 3/3;}
