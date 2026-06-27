@@ -182,8 +182,11 @@ const BouquetCard = ({ cat, index }) => {
                             >
                                 <span className="arrow-icon">
     <ArrowSvg />
+  </span> 
+  <span style={{marginRight:10}}>
+ Explore Bridal Bouquets 
   </span>
-                                Explore Engagements 
+                               
                             </span>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 4, color: 'var(--gold)',

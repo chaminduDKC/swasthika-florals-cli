@@ -37,7 +37,7 @@ const navigate = useNavigate();
         <div className="sfd-cat-overlay" />
         <div className="sfd-cat-content">
              
-            <h3 > <span className='sfd-cat-name'> {cat?.name} <em>{cat?.label}</em> </span> <span className="sfd-cat-arrow" onClick={() => navigate(`/category/${cat?._id}`)} role="button" tabIndex={0}>
+            <h3 > <span className='sfd-cat-name'> {cat?.name} <em>{cat?.label}</em> </span> <span className="sfd-cat-arrow" style={{marginLeft:10}} onClick={() => navigate(`/category/${cat?._id}`)} role="button" tabIndex={0}>
   <span className="arrow-icon">
     <ArrowSvg />
   </span>

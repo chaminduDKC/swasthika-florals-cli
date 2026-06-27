@@ -299,6 +299,7 @@ export const FontLink = () => (
     .sfd-cat-content {
       position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 28px 32px;
       display:flex;
+      
       transform: translateY(8px); transition: transform var(--tr);
     }
     .sfd-cat-card:hover .sfd-cat-content { transform: translateY(0); }
@@ -472,11 +473,33 @@ export const FontLink = () => (
     .sfd-gallery-item:hover { transform: scale(1.02); z-index: 2; }
     .sfd-gallery-icon {  opacity: .95; }
     .sfd-gallery-label {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 16px;
-      background: linear-gradient(to top, rgba(10,8,5,.9), transparent);
-      font-size: 1rem; letter-spacing: .15em; font-weight:400; text-transform: uppercase; color: var(--gold);
-    }
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 16px;
 
+  /* glass base */
+  background: rgba(10,8,5,.45);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+
+  border-top: 1px solid rgba(255,255,255,.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.2);
+
+  font-size: .82rem;
+  letter-spacing: .2em;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 1px 6px rgba(0,0,0,.6);
+}
+
+.sfd-gallery-label em {
+  font-style: italic;
+  color: var(--gold-lt);
+  letter-spacing: .1em;
+}
     /* TESTIMONIALS */
     .sfd-testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
     .sfd-testi-card {

@@ -113,10 +113,11 @@ const About = () => {
                                 }}
                                
                             >
-                                <span className="arrow-icon">
+                                <span className="arrow-icon" >
     <ArrowSvg />
   </span>
-                                Explore Engagements 
+  <span style={{marginRight:10}}>Explore Engagements </span>
+                                
                             </span>
                         </div>
                     </div>

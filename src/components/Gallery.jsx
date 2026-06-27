@@ -32,7 +32,7 @@ const Gallery = () => {
                 <span className="sfd-section-label sfd-reveal">Our Work</span>
                 <h2 className="sfd-section-title sfd-reveal d1" id="gallery-heading">A Glimpse of <em>Beauty</em></h2>
                 <div className="sfd-gold-line sfd-reveal d2" />
-                <p style={{ fontSize: ".8rem", color: "var(--muted)", letterSpacing: ".1em" }} className="sfd-reveal d2">Drag to explore ←→</p>
+                <p style={{ fontSize: ".8rem", color: "var(--muted)", letterSpacing: ".1em" }} className="sfd-reveal d2">Drag to explore</p>
             </div>
             {
                 otherCats.length === 0 ? (
