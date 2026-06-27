@@ -298,6 +298,8 @@ export const FontLink = () => (
     }
     .sfd-cat-content {
       position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 28px 32px;
+      display:flex;
+      flex-direction:column;
       transform: translateY(8px); transition: transform var(--tr);
     }
     .sfd-cat-card:hover .sfd-cat-content { transform: translateY(0); }
@@ -311,8 +313,7 @@ export const FontLink = () => (
   font-weight: 400;
   color: var(--cream);
   line-height: 1.15;
-  display: inline-block;
-
+    width:fit-content;
   background: rgba(255,255,255,.07);
   border-top: 1px solid rgba(255,255,255,.22);
   border-left: 1px solid rgba(255,255,255,.12);
@@ -322,17 +323,12 @@ export const FontLink = () => (
   padding: 8px 14px 10px;
   margin: 0 0 14px -14px;
 
-  backdrop-filter: blur(12px) saturate(1.4);
-  -webkit-backdrop-filter: blur(12px) saturate(1.4);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    inset 0 -1px 0 rgba(0,0,0,.2),
-    0 4px 16px rgba(0,0,0,.3);
+ 
 
   text-shadow: 0 1px 8px rgba(0,0,0,.5);
 }
 
+    
 .sfd-cat-name em { font-style: italic; color: var(--gold-lt); }
     .sfd-cat-desc {
       font-size: .78rem; color: var(--text); margin-top: 8px; line-height: 1.6;
@@ -342,6 +338,7 @@ export const FontLink = () => (
     .sfd-cat-card:hover .sfd-cat-desc { opacity: 1; transform: translateY(0); }
    .sfd-cat-arrow {
   display: inline-flex;
+  width:fit-content;
   align-items: center;
   gap: 0;
   cursor: pointer;
@@ -364,7 +361,6 @@ export const FontLink = () => (
 .sfd-cat-arrow:hover {
   background: rgba(201,168,76,.22);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 4px 16px rgba(0,0,0,.35);
-  transform: translateY(-1px);
 }
 
 .sfd-cat-arrow:active { transform: translateY(1px); }
@@ -391,10 +387,7 @@ export const FontLink = () => (
   flex-shrink: 0;
 }
 
-.sfd-cat-card:hover .arrow-icon {
-  transform: translateX(3px);
-  background: rgba(201,168,76,.35);
-}
+
 
 .arrow-icon svg { width: 13px; height: 13px; }
 

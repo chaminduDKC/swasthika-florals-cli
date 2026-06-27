@@ -152,9 +152,9 @@ const BouquetCard = ({ cat, index }) => {
         <p style={{
           fontSize: '.82rem', color: 'rgba(213,199,170,.75)',
           lineHeight: 1.8, marginBottom: 24,
-          maxHeight: hovered ? '120px' : '0px',
+          maxHeight:  '120px' ,
           overflow: 'hidden',
-          opacity: hovered ? 1 : 0,
+          opacity:  1,
           transition: 'max-height .5s cubic-bezier(.22,1,.36,1), opacity .35s',
         }}>
           {cat.description}
