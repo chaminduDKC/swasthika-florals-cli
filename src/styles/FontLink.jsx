@@ -374,6 +374,8 @@ export const FontLink = () => (
     .sfd-gallery-strip {
       display: flex; gap: 5px; overflow-x: auto; padding: 0 48px;
       scrollbar-width: none; cursor: grab;
+       max-width: 1400px;
+       margin: 0 auto;
     }
     .sfd-gallery-strip::-webkit-scrollbar { display: none; }
     .sfd-gallery-strip:active { cursor: grabbing; }
